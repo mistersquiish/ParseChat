@@ -14,6 +14,8 @@
 		2895C2A420477E89003B2057 /* ParseChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2895C2A320477E89003B2057 /* ParseChatTests.swift */; };
 		2895C2AF20477E89003B2057 /* ParseChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2895C2AE20477E89003B2057 /* ParseChatUITests.swift */; };
 		28BAF5FA2048D83A008E7AB9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BAF5F92048D83A008E7AB9 /* LoginViewController.swift */; };
+		28C76511204B902C002237D5 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C76510204B902C002237D5 /* ChatViewController.swift */; };
+		28C76513204B9478002237D5 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C76512204B9478002237D5 /* ChatCell.swift */; };
 		8B1567A87B40C798E59568EE /* Pods_ParseChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7FA8EFF675C373A7DD19D4 /* Pods_ParseChat.framework */; };
 		94163BC193181E862C23E53C /* Pods_ParseChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78BF9F2D4347B222F2751816 /* Pods_ParseChatTests.framework */; };
 		D781520A1CE98F0BD3B23CD2 /* Pods_ParseChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B5AFF775E7BD57B7D35375 /* Pods_ParseChatUITests.framework */; };
@@ -51,6 +53,8 @@
 		2895C2AE20477E89003B2057 /* ParseChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseChatUITests.swift; sourceTree = "<group>"; };
 		2895C2B020477E89003B2057 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28BAF5F92048D83A008E7AB9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		28C76510204B902C002237D5 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		28C76512204B9478002237D5 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		59B5AFF775E7BD57B7D35375 /* Pods_ParseChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParseChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78BF9F2D4347B222F2751816 /* Pods_ParseChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParseChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7FA8EFF675C373A7DD19D4 /* Pods_ParseChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParseChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,12 +118,13 @@
 		2895C28D20477E89003B2057 /* ParseChat */ = {
 			isa = PBXGroup;
 			children = (
+				28C7650F204B900C002237D5 /* ViewControllers */,
 				2895C28E20477E89003B2057 /* AppDelegate.swift */,
 				2895C29220477E89003B2057 /* Main.storyboard */,
 				2895C29520477E89003B2057 /* Assets.xcassets */,
 				2895C29720477E89003B2057 /* LaunchScreen.storyboard */,
 				2895C29A20477E89003B2057 /* Info.plist */,
-				28BAF5F92048D83A008E7AB9 /* LoginViewController.swift */,
+				28C76512204B9478002237D5 /* ChatCell.swift */,
 			);
 			path = ParseChat;
 			sourceTree = "<group>";
@@ -140,6 +145,15 @@
 				2895C2B020477E89003B2057 /* Info.plist */,
 			);
 			path = ParseChatUITests;
+			sourceTree = "<group>";
+		};
+		28C7650F204B900C002237D5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				28BAF5F92048D83A008E7AB9 /* LoginViewController.swift */,
+				28C76510204B902C002237D5 /* ChatViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		47DD6C9A0B6960A8CC61BF6D /* Frameworks */ = {
@@ -461,6 +475,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				28BAF5FA2048D83A008E7AB9 /* LoginViewController.swift in Sources */,
+				28C76513204B9478002237D5 /* ChatCell.swift in Sources */,
+				28C76511204B902C002237D5 /* ChatViewController.swift in Sources */,
 				2895C28F20477E89003B2057 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
