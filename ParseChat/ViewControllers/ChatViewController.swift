@@ -11,7 +11,7 @@ import Parse
 
 class ChatViewController: UIViewController, UITableViewDataSource {
     
-    var messages: [NSObject] = []
+    var messages: [String] = []
     
     
     
@@ -42,13 +42,14 @@ class ChatViewController: UIViewController, UITableViewDataSource {
         
         // Parse query
         var query = PFQuery(className:"Message")
+        query.addDescendingOrder("createdAt")
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil {
                 // The find succeeded.
                 // Do something with the found objects
                 if let objects = objects {
                     for message in objects {
-                        self.messages.append(message)
+                        self.messages.append(message.value(forKey: "objectId") as! String)
                         self.tableView.reloadData()
                     }
                 }
@@ -58,7 +59,7 @@ class ChatViewController: UIViewController, UITableViewDataSource {
             }
         }
         
-        //Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,14 +74,41 @@ class ChatViewController: UIViewController, UITableViewDataSource {
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! ChatCell
-        cell.messageLabel.text = messages[indexPath.row].value(forKey: "text") as? String
-        
+        var query = PFQuery(className: "Message")
+        query.getObjectInBackground(withId: "\(messages[indexPath.row])") {
+            (message: PFObject?, error: Error?) -> Void in
+            if error == nil && message != nil {
+                cell.messageLabel.text = message?.value(forKey: "text") as! String
+            } else {
+                print(error)
+            }
+        }
+
         return cell
     }
     
     // timer
     @objc func onTimer() {
-        
+        // Parse query and add message objects that have not been added
+        var query = PFQuery(className:"Message")
+        query.addDescendingOrder("createdAt")
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                // The find succeeded.
+                // Do something with the found objects
+                if let objects = objects {                    for message in objects {
+                        // checks if message is already in array
+                        if !(self.messages.contains(message.value(forKey: "objectId") as! String)) {
+                            self.messages.insert(message.value(forKey: "objectId") as! String, at: 0)
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            } else {
+                // Log details of the failure
+                print("Error: \(error!)")
+            }
+        }
     }
 
 
