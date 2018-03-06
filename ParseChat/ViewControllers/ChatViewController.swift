@@ -66,7 +66,6 @@ class ChatViewController: UIViewController, UITableViewDataSource {
                 print("Error: \(error!)")
             }
         }
-       
         
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
     }

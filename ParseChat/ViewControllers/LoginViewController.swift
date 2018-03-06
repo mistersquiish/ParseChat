@@ -35,7 +35,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(PFUser.current())
         
         // UIAlertController
         alertController = UIAlertController(title: "Error", message: "Please enter a username and password", preferredStyle: .alert)
