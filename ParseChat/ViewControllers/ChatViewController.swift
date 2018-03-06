@@ -13,8 +13,6 @@ class ChatViewController: UIViewController, UITableViewDataSource {
     
     var messages: [String] = []
     
-    
-    
     @IBOutlet weak var messageTextField: UITextField!
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,6 +21,7 @@ class ChatViewController: UIViewController, UITableViewDataSource {
         if messageTextField.text != "" {
             let chatMessage = PFObject(className: "Message")
             chatMessage["text"] = messageTextField.text ?? ""
+            chatMessage["sender"] = PFUser.current()?.value(forKey: "username")
             
             chatMessage.saveInBackground { (success, error) in
                 if success {
@@ -34,6 +33,15 @@ class ChatViewController: UIViewController, UITableViewDataSource {
             }
         }
     }
+    
+    @IBAction func logoutButton(_ sender: Any) {
+        PFUser.logOutInBackground { (error: Error?) in
+            // PFUser.current() will now be nil
+        }
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     
     
     override func viewDidLoad() {
@@ -58,6 +66,7 @@ class ChatViewController: UIViewController, UITableViewDataSource {
                 print("Error: \(error!)")
             }
         }
+       
         
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.onTimer), userInfo: nil, repeats: true)
     }
@@ -79,6 +88,7 @@ class ChatViewController: UIViewController, UITableViewDataSource {
             (message: PFObject?, error: Error?) -> Void in
             if error == nil && message != nil {
                 cell.messageLabel.text = message?.value(forKey: "text") as! String
+                cell.usernameLabel.text = message?.value(forKey: "sender") as! String
             } else {
                 print(error)
             }

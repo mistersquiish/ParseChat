@@ -2,7 +2,7 @@
 
 **ParseChat** is a Chat app using an [open source Parse](http://parseplatform.org/) backend.
 
-Time spent: **6.5** hours spent in total
+Time spent: **8** hours spent in total
 
 ## User Stories
 
@@ -13,8 +13,8 @@ The following **required** user stories are complete:
 - [x] User can compose and send chat messages (+2pt)
 - [x] User can view a list of chat messages in chronological order (+2pt)
 - [ ] Automatically Adjust Cell Size to Fit Text (+1pt)
-- [ ] Username of chat author is displayed in each chat message (+2pt)
-- [ ] Persist Logged in User (+1pt)
+- [x] Username of chat author is displayed in each chat message (+2pt)
+- [x] Persist Logged in User (+1pt)
 
 The following **stretch** user stories are implemented:
 
@@ -30,7 +30,7 @@ The following **additional** user stories are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
+1.  I cannot figure out why the cell size doesn't want to adjust
 2.
 
 ## Video Walkthrough
